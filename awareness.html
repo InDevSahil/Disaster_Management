@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Awareness - Disaster Management India</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .disaster-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .disaster-section:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .disaster-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .disaster-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .disaster-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .info-card h3 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+        .info-card ul {
+            padding-left: 1.5rem;
+        }
+        .info-card li {
+            margin-bottom: 0.5rem;
+        }
+        .awareness-nav {
+            position: sticky;
+            top: 80px;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .awareness-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+        }
+        .awareness-nav a {
+            padding: 0.5rem 1rem;
+            background: #3182ce;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .awareness-nav a:hover {
+            background: #2c5282;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="LOGO.png" alt="DisasterGuardians Logo">
+                <h1>DisasterGuardians</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+<li><a href="map.html">Map</a></li>
+                <li><a href="awareness.html">Awareness</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="preparedness.html">Preparedness</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="emergency-link"><a href="#emergency" class="btn-emergency">Emergency</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="awareness-intro disaster-section">
+            <div class="container">
+                <h2>Disaster Awareness & Education</h2>
+                <p>Knowledge is the first line of defense against disasters. Learn about different types of natural disasters in India, their causes, prevention measures, and what to do before, during, and after each type of disaster.</p>
+                
+                <div class="awareness-nav">
+                    <ul>
+                        <li><a href="#floods">🌊 Floods</a></li>
+                        <li><a href="#earthquakes">🏔️ Earthquakes</a></li>
+                        <li><a href="#cyclones">🌀 Cyclones</a></li>
+                        <li><a href="#droughts">🏜️ Droughts</a></li>
+                        <li><a href="#landslides">⛰️ Landslides</a></li>
+                        <li><a href="#cloudbursts">🌧️ Cloudbursts</a></li>
+                        <li><a href="#heatwaves">🔥 Heatwaves</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="floods" class="disaster-section">
+            <div class="container">
+                <div class="disaster-header">
+                    <img src="FLOOD.webp" alt="Floods in India" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;">
+                    <div class="disaster-icon">🌊</div>
+                    <h2>Floods</h2>
+                    <p>Heavy rainfall and river overflow cause devastating floods across India, especially during monsoon season.</p>
+                </div>
+                <div class="disaster-content">
+                    <div class="info-card">
+                        <h3>Causes</h3>
+                        <ul>
+                            <li>Heavy rainfall</li>
+                            <li>River overflow</li>
+                            <li>Dam failure</li>
+                            <li>Cyclone-induced surges</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Prevention</h3>
+                        <ul>
+                            <li>Build embankments</li>
+                            <li>Improve drainage</li>
+                            <li>Plant trees</li>
+                            <li>Early warning systems</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Before Flood</h3>
+                        <ul>
+                            <li>Prepare emergency kit</li>
+                            <li>Know evacuation routes</li>
+                            <li>Secure property</li>
+                            <li>Stay informed</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>During Flood</h3>
+                        <ul>
+                            <li>Move to higher ground</li>
+                            <li>Avoid walking in floodwater</li>
+                            <li>Follow authorities</li>
+                            <li>Conserve food/water</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>After Flood</h3>
+                        <ul>
+                            <li>Check for injuries</li>
+                            <li>Avoid contaminated water</li>
+                            <li>Document damage</li>
+                            <li>Seek help if needed</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="earthquakes" class="disaster-section">
+            <div class="container">
+                <div class="disaster-header">
+                    <img src="GUJRAT EARTHQUAKE.jpg" alt="Earthquake damage in India" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;">
+                    <div class="disaster-icon">🏔️</div>
+                    <h2>Earthquakes</h2>
+                    <p>Sudden ground shaking caused by tectonic movements, common in Himalayan and western regions.</p>
+                </div>
+                <div class="disaster-content">
+                    <div class="info-card">
+                        <h3>Causes</h3>
+                        <ul>
+                            <li>Tectonic plate movement</li>
+                            <li>Fault lines</li>
+                            <li>Volcanic activity</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Prevention</h3>
+                        <ul>
+                            <li>Build earthquake-resistant structures</li>
+                            <li>Regular drills</li>
+                            <li>Secure heavy objects</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Before Earthquake</h3>
+                        <ul>
+                            <li>Prepare emergency kit</li>
+                            <li>Know safe spots</li>
+                            <li>Secure home</li>
+                            <li>Family communication plan</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>During Earthquake</h3>
+                        <ul>
+                            <li>Drop, Cover, Hold On</li>
+                            <li>Stay away from windows</li>
+                            <li>Don't use elevators</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>After Earthquake</h3>
+                        <ul>
+                            <li>Check for injuries</li>
+                            <li>Inspect for damage</li>
+                            <li>Avoid damaged buildings</li>
+                            <li>Follow aftershocks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cyclones" class="disaster-section">
+            <div class="container">
+                <div class="disaster-header">
+                    <img src="CYCLONE IN CHEENAI.webp" alt="Cyclone approaching coast" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;">
+                    <div class="disaster-icon">🌀</div>
+                    <h2>Cyclones</h2>
+                    <p>Powerful tropical storms that affect coastal regions with high winds and heavy rain.</p>
+                </div>
+                <div class="disaster-content">
+                    <div class="info-card">
+                        <h3>Causes</h3>
+                        <ul>
+                            <li>Low pressure systems</li>
+                            <li>Warm ocean temperatures</li>
+                            <li>Atmospheric conditions</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Prevention</h3>
+                        <ul>
+                            <li>Build shelters</li>
+                            <li>Strengthen infrastructure</li>
+                            <li>Early warning systems</li>
+                            <li>Coastal protection</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Before Cyclone</h3>
+                        <ul>
+                            <li>Stock emergency supplies</li>
+                            <li>Know evacuation routes</li>
+                            <li>Secure property</li>
+                            <li>Stay updated</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>During Cyclone</h3>
+                        <ul>
+                            <li>Stay indoors</li>
+                            <li>Avoid windows</li>
+                            <li>Follow evacuation orders</li>
+                            <li>Conserve resources</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>After Cyclone</h3>
+                        <ul>
+                            <li>Assess damage</li>
+                            <li>Avoid downed power lines</li>
+                            <li>Check for contamination</li>
+                            <li>Seek medical help</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="droughts" class="disaster-section">
+            <div class="container">
+                <div class="disaster-header">
+                    <img src="Droughts IN RAJESSHTHAN.jpg" alt="Droughts in Rajasthan" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;">
+                    <div class="disaster-icon">🏜️</div>
+                    <h2>Droughts</h2>
+                    <p>Prolonged dry periods leading to water scarcity and agricultural losses.</p>
+                </div>
+                <div class="disaster-content">
+                    <div class="info-card">
+                        <h3>Causes</h3>
+                        <ul>
+                            <li>Low rainfall</li>
+                            <li>Climate change</li>
+                            <li>Deforestation</li>
+                            <li>Over-extraction of water</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Prevention</h3>
+                        <ul>
+                            <li>Water conservation</li>
+                            <li>Rainwater harvesting</li>
+                            <li>Drought-resistant crops</li>
+                            <li>Sustainable practices</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Before Drought</h3>
+                        <ul>
+                            <li>Store water</li>
+                            <li>Conserve resources</li>
+                            <li>Plan for reduced yields</li>
+                            <li>Monitor weather</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>During Drought</h3>
+                        <ul>
+                            <li>Ration water</li>
+                            <li>Protect livestock</li>
+                            <li>Seek government aid</li>
+                            <li>Conserve energy</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>After Drought</h3>
+                        <ul>
+                            <li>Replenish water sources</li>
+                            <li>Restore agriculture</li>
+                            <li>Learn from experience</li>
+                            <li>Implement long-term solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="landslides" class="disaster-section">
+            <div class="container">
+                <div class="disaster-header">
+                    <img src="Landslides IN HIMACHAL.webp" alt="Landslides in Himachal" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;">
+                    <div class="disaster-icon">⛰️</div>
+                    <h2>Landslides</h2>
+                    <p>Mass movement of rock, earth, or debris down a slope, common in hilly regions.</p>
+                </div>
+                <div class="disaster-content">
+                    <div class="info-card">
+                        <h3>Causes</h3>
+                        <ul>
+                            <li>Heavy rain</li>
+                            <li>Earthquakes</li>
+                            <li>Deforestation</li>
+                            <li>Mining activities</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Prevention</h3>
+                        <ul>
+                            <li>Plant trees</li>
+                            <li>Build retaining walls</li>
+                            <li>Proper drainage</li>
+                            <li>Land use planning</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Before Landslide</h3>
+                        <ul>
+                            <li>Know risk areas</li>
+                            <li>Prepare emergency kit</li>
+                            <li>Monitor weather</li>
+                            <li>Have evacuation plan</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>During Landslide</h3>
+                        <ul>
+                            <li>Move to safe area</li>
+                            <li>Avoid landslide path</li>
+                            <li>Stay alert</li>
+                            <li>Follow warnings</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>After Landslide</h3>
+                        <ul>
+                            <li>Search for survivors</li>
+                            <li>Avoid unstable areas</li>
+                            <li>Report incidents</li>
+                            <li>Seek professional help</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cloudbursts" class="disaster-section">
+            <div class="container">
+                <div class="disaster-header">
+                    <img src="cloud-burst-Himachal-Prades.jpg" alt="Cloudburst in Himachal Pradesh" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;">
+                    <div class="disaster-icon">🌧️</div>
+                    <h2>Cloudbursts</h2>
+                    <p>Sudden, intense rainfall over a small area, causing flash floods in mountainous regions.</p>
+                </div>
+                <div class="disaster-content">
+                    <div class="info-card">
+                        <h3>Causes</h3>
+                        <ul>
+                            <li>Intense rainfall</li>
+                            <li>Mountainous terrain</li>
+                            <li>Atmospheric instability</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Prevention</h3>
+                        <ul>
+                            <li>Weather monitoring</li>
+                            <li>Early warning systems</li>
+                            <li>Infrastructure protection</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Before Cloudburst</h3>
+                        <ul>
+                            <li>Know flash flood risks</li>
+                            <li>Prepare emergency kit</li>
+                            <li>Stay informed</li>
+                            <li>Secure belongings</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>During Cloudburst</h3>
+                        <ul>
+                            <li>Move to higher ground</li>
+                            <li>Avoid low-lying areas</li>
+                            <li>Follow evacuation orders</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>After Cloudburst</h3>
+                        <ul>
+                            <li>Check for injuries</li>
+                            <li>Inspect damage</li>
+                            <li>Avoid contaminated water</li>
+                            <li>Report to authorities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="heatwaves" class="disaster-section">
+            <div class="container">
+                <div class="disaster-header">
+                    <img src="Heatwaves.webp" alt="Heatwaves" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;">
+                    <div class="disaster-icon">🔥</div>
+                    <h2>Heatwaves</h2>
+                    <p>Prolonged periods of excessively hot weather that can cause health emergencies.</p>
+                </div>
+                <div class="disaster-content">
+                    <div class="info-card">
+                        <h3>Causes</h3>
+                        <ul>
+                            <li>High temperatures</li>
+                            <li>Humidity</li>
+                            <li>Climate change</li>
+                            <li>Urban heat islands</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Prevention</h3>
+                        <ul>
+                            <li>Heat action plans</li>
+                            <li>Public awareness</li>
+                            <li>Cooling centers</li>
+                            <li>Water availability</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>Before Heatwave</h3>
+                        <ul>
+                            <li>Stay hydrated</li>
+                            <li>Avoid outdoor work</li>
+                            <li>Check on vulnerable people</li>
+                            <li>Prepare home cooling</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>During Heatwave</h3>
+                        <ul>
+                            <li>Stay indoors</li>
+                            <li>Drink plenty of water</li>
+                            <li>Wear light clothing</li>
+                            <li>Avoid alcohol/caffeine</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>After Heatwave</h3>
+                        <ul>
+                            <li>Monitor health</li>
+                            <li>Rehydrate slowly</li>
+                            <li>Check on others</li>
+                            <li>Learn preventive measures</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Disaster Management India. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://ndma.gov.in">NDMA</a>
+                <a href="https://ndrf.gov.in">NDRF</a>
+                <a href="https://imd.gov.in">IMD</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
