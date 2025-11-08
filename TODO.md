@@ -1,7 +1,11 @@
-# TODO: Enhance Slider with Swiper.js
+# TODO: Replace Leaflet Map with Google Maps and Deploy to GitHub Pages
 
-## Steps to Complete
-- [x] Update index.html: Add Swiper.js and Swiper CSS CDNs in <head>, restructure .banner-slider to use Swiper classes (swiper-wrapper, swiper-slide), update controls to swiper-button-prev/next.
-- [x] Update js/script.js: Remove old slider logic (showSlide, next/prev, interval, keyboard), add Swiper initialization with autoplay, navigation, keyboard, and fade effect.
-- [x] Update css/styles.css: Remove old .slide opacity rules, add Swiper overrides for images, buttons, and theme compatibility.
-- [x] Test slider: Run local server, verify auto-play, buttons, swipe, responsiveness, and dark mode.
+- [x] Check and initialize Git repository if needed
+- [x] Set Git remote to https://github.com/InDevSahil/Disaster_Management.git
+- [x] Update map.html: Remove Leaflet CSS/JS links, add Google Maps API script with placeholder key
+- [x] Rewrite js/map.js: Replace Leaflet implementation with Google Maps API, maintaining functionality
+- [ ] Commit changes to Git
+- [ ] Push changes to GitHub
+- [ ] Enable GitHub Pages for deployment (user action: go to repo settings > Pages > source: main branch)
+- [ ] Test locally and verify deployment
+- [ ] Replace placeholder API key with actual Google Maps API key

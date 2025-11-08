@@ -1,18 +1,33 @@
-// Interactive Map functionality using Leaflet.js
+// Interactive Map functionality using Google Maps API
 
-document.addEventListener('DOMContentLoaded', function() {
+let map;
+let markers = [];
+let infoWindows = [];
+
+function initMap() {
     // Initialize map only if map container exists
     const mapContainer = document.getElementById('map');
     if (!mapContainer) return;
 
     // Initialize the map centered on India
-    const map = L.map('map').setView([20.5937, 78.9629], 5);
-
-    // Add Esri World Street Map tiles for accurate India mapping
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom',
-        maxZoom: 20,
-    }).addTo(map);
+    map = new google.maps.Map(mapContainer, {
+        center: { lat: 20.5937, lng: 78.9629 },
+        zoom: 5,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: [
+            // Custom styling to match the theme
+            {
+                featureType: 'water',
+                elementType: 'geometry',
+                stylers: [{ color: '#e9e9e9' }]
+            },
+            {
+                featureType: 'landscape',
+                elementType: 'geometry',
+                stylers: [{ color: '#f5f5f5' }]
+            }
+        ]
+    });
 
     // State coordinates and data
     const statesData = {
@@ -49,25 +64,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add markers for each state
     Object.keys(statesData).forEach(stateName => {
         const state = statesData[stateName];
-        const marker = L.circleMarker([state.lat, state.lng], {
-            color: state.color,
-            fillColor: state.color,
-            fillOpacity: 0.7,
-            radius: 8
-        }).addTo(map);
+        const marker = new google.maps.Marker({
+            position: { lat: state.lat, lng: state.lng },
+            map: map,
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 8,
+                fillColor: state.color,
+                fillOpacity: 0.7,
+                strokeColor: state.color,
+                strokeWeight: 2
+            },
+            title: stateName
+        });
 
-        // Add popup with state information
-        marker.bindPopup(`
-            <div class="state-popup">
-                <h3>${stateName}</h3>
-                <div id="state-info-${stateName.replace(/\s+/g, '-').toLowerCase()}">
-                    <p>Loading disaster information...</p>
+        // Create info window content
+        const infoWindow = new google.maps.InfoWindow({
+            content: `
+                <div class="state-popup">
+                    <h3>${stateName}</h3>
+                    <div id="state-info-${stateName.replace(/\s+/g, '-').toLowerCase()}">
+                        <p>Loading disaster information...</p>
+                    </div>
                 </div>
-            </div>
-        `);
+            `
+        });
 
-        // Load disaster data when popup opens
-        marker.on('popupopen', async function() {
+        // Load disaster data when marker is clicked
+        marker.addListener('click', async function() {
             const infoDiv = document.getElementById(`state-info-${stateName.replace(/\s+/g, '-').toLowerCase()}`);
             if (!infoDiv) return;
 
@@ -96,7 +120,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p>Please check with local authorities for specific guidelines.</p>
                 `;
             }
+
+            infoWindow.open(map, marker);
         });
+
+        markers.push(marker);
+        infoWindows.push(infoWindow);
     });
 
     // Load and display recent disasters
@@ -138,40 +167,28 @@ document.addEventListener('DOMContentLoaded', function() {
         width: 200px;
     `;
 
-    map.getContainer().appendChild(searchInput);
+    map.getDiv().appendChild(searchInput);
 
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
-        Object.keys(statesData).forEach(stateName => {
-            const state = statesData[stateName];
-            const marker = map._layers[Object.keys(map._layers).find(layerId => {
-                const layer = map._layers[layerId];
-                return layer instanceof L.CircleMarker &&
-                       layer.getLatLng().lat === state.lat &&
-                       layer.getLatLng().lng === state.lng;
-            })];
-
-            if (marker) {
-                if (stateName.toLowerCase().includes(searchTerm)) {
-                    marker.setStyle({ opacity: 1, fillOpacity: 0.7 });
-                    marker.openPopup();
-                } else {
-                    marker.setStyle({ opacity: 0.3, fillOpacity: 0.3 });
-                    marker.closePopup();
+        markers.forEach((marker, index) => {
+            const stateName = Object.keys(statesData)[index];
+            if (stateName.toLowerCase().includes(searchTerm)) {
+                marker.setVisible(true);
+                if (searchTerm) {
+                    // Open info window for matching states
+                    google.maps.event.trigger(marker, 'click');
                 }
+            } else {
+                marker.setVisible(false);
+                infoWindows[index].close();
             }
         });
     });
 
-    // Add zoom controls
-    map.zoomControl.setPosition('bottomright');
-
-    // Add scale control
-    L.control.scale().addTo(map);
-
     // Handle map resize
-    window.addEventListener('resize', function() {
-        map.invalidateSize();
+    google.maps.event.addDomListener(window, 'resize', function() {
+        google.maps.event.trigger(map, 'resize');
     });
 
     // Add keyboard navigation
@@ -181,32 +198,32 @@ document.addEventListener('DOMContentLoaded', function() {
         switch(e.key) {
             case '+':
             case '=':
-                map.zoomIn();
+                map.setZoom(map.getZoom() + 1);
                 break;
             case '-':
-                map.zoomOut();
+                map.setZoom(map.getZoom() - 1);
                 break;
             case 'ArrowUp':
-                map.panBy([0, -100]);
+                map.panBy(0, -100);
                 break;
             case 'ArrowDown':
-                map.panBy([0, 100]);
+                map.panBy(0, 100);
                 break;
             case 'ArrowLeft':
-                map.panBy([-100, 0]);
+                map.panBy(-100, 0);
                 break;
             case 'ArrowRight':
-                map.panBy([100, 0]);
+                map.panBy(100, 0);
                 break;
         }
     });
 
     // Log map interactions for analytics
-    map.on('click', function(e) {
-        console.log('Map clicked at:', e.latlng);
+    map.addListener('click', function(e) {
+        console.log('Map clicked at:', e.latLng.toJSON());
     });
 
-    map.on('zoomend', function() {
+    map.addListener('zoom_changed', function() {
         console.log('Map zoomed to level:', map.getZoom());
     });
-});
+}
